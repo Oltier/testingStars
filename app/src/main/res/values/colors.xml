@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/colorWanariDark</color>
+    <color name="colorPrimaryDark">@color/colorBlack</color>
+    <color name="colorAccent">@color/colorWanariRaspberry</color>
+    <color name="colorText">@color/colorWanariWhite</color>
+    <!--Wanari's colors-->
+    <color name="colorWanariRaspberry">#FF0057</color>
+    <color name="colorWanariBlue">#24007F</color>
+    <color name="colorWanariWhite">#FFFFFFFF</color>
+    <color name="colorWanariLight">#FCFCFC</color>
+    <color name="colorWanariDark">#28203E</color>
+    <color name="colorBlack">#000000</color>
+</resources>

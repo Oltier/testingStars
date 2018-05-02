@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Wanari Stars</string>
+
+    <string name="login_user">User</string>
+    <string name="login_password">Password</string>
+    <string name="login_logout">Log out</string>
+    <string name="login_login">Sign in</string>
+    <string name="send">Send</string>
+    <string name="text_to_be_saved">Text to be saved…</string>
+    <string name="empty_list">Empty list.</string>
+    <string name="send_review">Send review</string>
+    <string name="myrating">My rating:</string>
+    <string name="givenrating">Given rating:</string>
+
+</resources>
