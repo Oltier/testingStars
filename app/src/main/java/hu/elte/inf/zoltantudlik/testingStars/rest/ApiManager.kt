@@ -15,19 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiManager private constructor() {
 
-//    var deserializer: JsonDeserializer<User> = object : JsonDeserializer<User> {
-//        @Throws(JsonParseException::class)
-//        override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): User {
-//            val jsonObject = json.asJsonObject
-//
-//            val name = jsonObject.get("name").asString
-//            val id = jsonObject.get("id").asString
-//            val _ratings = jsonObject.getAsJsonArray("_ratings")
-//                    .map{ rating -> }
-//
-//            return User(name = name, id = id, _ratings = _ratings)
-//        }
-//    }
 
     private object Holder {
         val INSTANCE = ApiManager()
@@ -50,7 +37,6 @@ class ApiManager private constructor() {
                 .addInterceptor(loggingInterceptor)
                 .build()
 
-//        val gson = GsonBuilder().registerTypeAdapter(User::class.java, deserializer).create()
         val gson = GsonBuilder().create()
 
         val restAdapter = Retrofit.Builder()
