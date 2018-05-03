@@ -14,9 +14,10 @@
         android:background="@drawable/raspberry_border_bg"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/person_image"
             android:layout_width="90dp"
+            android:src="@drawable/friendly_kitten_icon"
             android:layout_height="90dp"
             android:layout_marginEnd="@dimen/spacing_medium" />
 
@@ -37,6 +38,6 @@
             android:layout_gravity="center_vertical"
             android:gravity="end"
             android:paddingEnd="@dimen/tv_base_padding"
-            android:textColor="@color/colorWanariRaspberry"/>
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

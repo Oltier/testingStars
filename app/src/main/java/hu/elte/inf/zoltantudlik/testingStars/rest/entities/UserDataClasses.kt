@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 
-data class Rating(val id: String?, val value: Int) : Parcelable {
+data class Rating(val id: String, val value: Int) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readInt()) {
@@ -30,7 +30,30 @@ data class Rating(val id: String?, val value: Int) : Parcelable {
     }
 }
 
-data class User(val name: String, val id: String?, val _ratings: List<Rating>) : Parcelable {
+data class AddRating(val value: Int) : Parcelable {
+    constructor(parcel: Parcel) : this(parcel.readInt()) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(value)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<AddRating> {
+        override fun createFromParcel(parcel: Parcel): AddRating {
+            return AddRating(parcel)
+        }
+
+        override fun newArray(size: Int): Array<AddRating?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
+
+data class User(val name: String, val id: String, val _ratings: List<Rating>) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),

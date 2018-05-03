@@ -6,45 +6,10 @@
                                              android:background="@color/colorPrimary"
                                              android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:expanded="false">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_vb"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <TextView
-                android:id="@+id/tvLogout_vb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/tv_base_padding"
-                android:background="@drawable/button_bg"
-                android:paddingBottom="10dp"
-                android:paddingEnd="@dimen/tv_base_padding"
-                android:paddingStart="@dimen/tv_base_padding"
-                android:paddingTop="10dp"
-                android:text="@string/login_logout"
-                android:textAllCaps="true"
-                android:textColor="@color/colorText"
-                android:textStyle="bold"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-
     <FrameLayout
         android:id="@+id/profile_view_border"
         android:layout_width="@dimen/profile_content_frame_width"
-        android:layout_height="@dimen/profile_content_frame_height"
+        android:layout_height="@dimen/profile_content_frame_width"
         android:layout_marginBottom="@dimen/spacing_medium"
         android:layout_marginEnd="@dimen/spacing_medium"
         android:layout_marginStart="@dimen/spacing_medium"
@@ -53,17 +18,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.15">
     </FrameLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profilePicture"
         android:layout_width="@dimen/profile_picture_sides"
         android:layout_height="@dimen/profile_picture_sides"
         android:layout_marginEnd="@dimen/spacing_medium"
         android:layout_marginStart="@dimen/spacing_xlarge"
+        android:src="@drawable/friendly_kitten_icon"
         android:layout_marginTop="@dimen/spacing_xlarge"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintEnd_toEndOf="@+id/profile_view_border"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/profile_view_border"
@@ -86,6 +53,7 @@
         android:id="@+id/ratingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="@dimen/spacing_large"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginTop="@dimen/spacing_xxl"
@@ -94,11 +62,13 @@
         app:drawable_margin="@dimen/spacing_large"
         app:drawable_size="@dimen/rating_star_size"
         app:is_indicator="false"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/btnSendReview"
         app:layout_constraintEnd_toEndOf="@id/profile_view_border"
         app:layout_constraintStart_toStartOf="@id/profile_view_border"
         app:layout_constraintTop_toBottomOf="@id/profilePicture"
         app:max_count="5"
-        app:rating="0"/>
+        app:rating="0" />
 
     <Button
         android:id="@+id/btnSendReview"
@@ -115,24 +85,5 @@
         app:layout_constraintBottom_toBottomOf="@id/profile_view_border"
         app:layout_constraintEnd_toEndOf="@id/profile_view_border"
         app:layout_constraintStart_toStartOf="@id/profile_view_border"/>
-
-    <EditText
-        android:id="@+id/textView"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/edit_text_bg"
-        android:fontFamily="sans-serif"
-        android:inputType="text"
-        android:singleLine="false"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/btnSendReview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingView"/>
 
 </android.support.constraint.ConstraintLayout>
