@@ -8,8 +8,8 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.example.zoltantudlik.testing_stars.R
-import hu.elte.inf.zoltantudlik.testingStars.utils.ListExtension
 import hu.elte.inf.zoltantudlik.testingStars.rest.entities.User
+import hu.elte.inf.zoltantudlik.testingStars.utils.ListExtension
 import java.text.DecimalFormat
 
 class PeopleAdapter(private val peopleClickListener: PeopleClickListener<User>) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>(), ListExtension {

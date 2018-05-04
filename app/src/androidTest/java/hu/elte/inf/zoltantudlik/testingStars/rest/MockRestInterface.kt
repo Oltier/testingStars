@@ -1,12 +1,9 @@
 package hu.elte.inf.zoltantudlik.testingStars.rest
 
 import android.content.Context
-import android.util.JsonReader
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
-import hu.elte.inf.zoltantudlik.testingStars.rest.entities.User
 import java.io.*
 import java.lang.reflect.Type
 

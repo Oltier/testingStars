@@ -6,7 +6,6 @@ import hu.elte.inf.zoltantudlik.testingStars.MainActivity
 import hu.elte.inf.zoltantudlik.testingStars.people.peopleList
 import hu.elte.inf.zoltantudlik.testingStars.utils.initialize
 import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 

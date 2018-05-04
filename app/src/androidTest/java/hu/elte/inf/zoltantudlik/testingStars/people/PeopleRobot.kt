@@ -1,7 +1,6 @@
 package hu.elte.inf.zoltantudlik.testingStars.people
 
 import android.support.test.espresso.Espresso
-import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers
@@ -13,7 +12,6 @@ import hu.elte.inf.zoltantudlik.testingStars.utils.BaseRobot
 import hu.elte.inf.zoltantudlik.testingStars.utils.RecyclerHelper
 import hu.elte.inf.zoltantudlik.testingStars.utils.ViewHelper
 import org.awaitility.Awaitility
-import org.awaitility.Awaitility.await
 import org.hamcrest.Matchers.allOf
 import java.util.concurrent.TimeUnit
 

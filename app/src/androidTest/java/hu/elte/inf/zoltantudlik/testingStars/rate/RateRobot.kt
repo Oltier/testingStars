@@ -6,8 +6,6 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import com.example.zoltantudlik.testing_stars.R
-import hu.elte.inf.zoltantudlik.testingStars.people.PeopleController
-import hu.elte.inf.zoltantudlik.testingStars.people.PeopleRobot
 import hu.elte.inf.zoltantudlik.testingStars.utils.BaseRobot
 import hu.elte.inf.zoltantudlik.testingStars.utils.RecyclerHelper
 import hu.elte.inf.zoltantudlik.testingStars.utils.ViewHelper
