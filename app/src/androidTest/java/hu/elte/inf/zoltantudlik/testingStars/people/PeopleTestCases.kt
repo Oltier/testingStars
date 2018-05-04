@@ -23,7 +23,7 @@ class PeopleTestCases {
     }
 
     @Test
-    fun testNoInternetConnectionToast() {
+    fun `testNoInternetConnectionToast`() {
         initialize {
             enableInternetConnection(false)
             initDagger()

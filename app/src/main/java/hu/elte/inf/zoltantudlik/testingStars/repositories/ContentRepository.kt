@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 
-class ContentRepository {
+open class ContentRepository {
 
     @Inject
     lateinit var contentService: ContentService

@@ -80,13 +80,11 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.9.1'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "$junit5Version"
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "$junit5Version"
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "$junit5Version"
-    testCompile group: 'com.nhaarman', name: 'mockito-kotlin', version: '1.5.0'
-    testCompile group: 'io.mockk', name: 'mockk', version: '1.7.15'
+    testImplementation 'junit:junit:4.12'
+//    testImplementation 'org.mockito:mockito-core:2.16.0'
+    testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
+    testImplementation 'com.android.support.test:runner:1.0.2'
 
-    androidTestImplementation group: 'com.squareup.okhttp3', name: 'mockwebserver', version: '3.8.0'
     // Espresso core
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 

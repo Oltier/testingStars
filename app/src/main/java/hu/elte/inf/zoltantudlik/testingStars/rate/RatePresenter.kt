@@ -20,17 +20,16 @@ class RatePresenter(initialViewState: RateViewState) : BasePresenter<RateContrac
     override fun prepareIntentObservables(): ArrayList<Observable<RateViewStateChange>> {
         val observables = ArrayList<Observable<RateViewStateChange>>()
 
-        observables.add(intent { view ->
-            view.rating()
-                    .flatMap { review ->
-                        contentRepository.addRating(review)
-                                .andThen(Observable.just(true))
-                                .map<RateViewStateChange> { _ -> RateViewStateChange.Loaded(true) }
-                                .startWith(RateViewStateChange.Loading(true))
-                                .onErrorReturn { throwable: Throwable -> RateViewStateChange.Error(throwable) }
-                                .subscribeOn(Schedulers.io())
-                    }
-        })
+        observables.add(intent { view -> view.rating() }
+                .flatMap { rating ->
+                    contentRepository.addRating(rating)
+                            .andThen(Observable.just(true))
+                            .map<RateViewStateChange> { _ -> RateViewStateChange.Loaded(true) }
+                            .startWith(RateViewStateChange.Loading(true))
+                            .onErrorReturn { throwable: Throwable -> RateViewStateChange.Error(throwable) }
+                            .subscribeOn(Schedulers.io())
+                }
+        )
 
         return observables
     }

@@ -8,11 +8,11 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.example.zoltantudlik.testing_stars.R
-import hu.elte.inf.zoltantudlik.testingStars.rest.entities.Rating
+import hu.elte.inf.zoltantudlik.testingStars.utils.ListExtension
 import hu.elte.inf.zoltantudlik.testingStars.rest.entities.User
 import java.text.DecimalFormat
 
-class PeopleAdapter(private val peopleClickListener: PeopleClickListener<User>) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
+class PeopleAdapter(private val peopleClickListener: PeopleClickListener<User>) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>(), ListExtension {
     private val UserList = ArrayList<User>()
 
     fun setData(UserLoadList: List<User>) {
@@ -45,8 +45,4 @@ class PeopleAdapter(private val peopleClickListener: PeopleClickListener<User>) 
             ButterKnife.bind(this, itemView)
         }
     }
-}
-
-private fun List<Rating>.avg(): Float {
-    return this.map { it.value }.sumBy { it }.toFloat() / this.size
 }
