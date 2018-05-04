@@ -21,7 +21,11 @@ class MockContentService(context: Context, gson: Gson): MockRestInterface(contex
     }
 
     override fun addRating(id: String, rating: AddRating): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if(IS_CONNECTED_TO_INTERNET) {
+            return Completable.complete()
+        } else {
+            throw SocketTimeoutException("No internet connection")
+        }
     }
 
 

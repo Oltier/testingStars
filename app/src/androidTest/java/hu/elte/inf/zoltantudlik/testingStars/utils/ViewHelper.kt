@@ -5,8 +5,11 @@ import android.support.test.espresso.ViewAction
 import android.support.test.espresso.matcher.BoundedMatcher
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.View
+import com.example.zoltantudlik.testing_stars.R
+import com.github.ornolfr.ratingview.RatingView
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.hamcrest.TypeSafeMatcher
 
 
 object ViewHelper {
@@ -20,6 +23,20 @@ object ViewHelper {
             override fun matchesSafely(view: SwipeRefreshLayout): Boolean {
                 return view.isRefreshing
             }
+        }
+    }
+
+    fun hasRating(expected: Float): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+            override fun describeTo(description: Description?) {
+                description?.appendText(expected.toString())
+            }
+
+            override fun matchesSafely(item: View?): Boolean {
+                val ratingView: RatingView = item!!.findViewById<RatingView>(R.id.ratingView)
+                return ratingView.rating == expected
+            }
+
         }
     }
 

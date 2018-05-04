@@ -26,7 +26,7 @@ fun peopleList(activity: MainActivity, func: PeopleRobot.() -> Unit) = PeopleRob
 
 class PeopleRobot() : BaseRobot() {
 
-    lateinit var peopleController: PeopleController
+    private lateinit var peopleController: PeopleController
 
     constructor(peopleController: PeopleController) : this() {
         this.peopleController = peopleController
@@ -84,7 +84,7 @@ class PeopleRobot() : BaseRobot() {
                 .onView(allOf(withId(R.id.personRecyclerView), RecyclerHelper.atPosition(0, hasDescendant(withId(R.id.person_image)))))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<PeopleAdapter.ViewHolder>(0, ViewHelper.clickChildViewWithId(R.id.cardView)))
 
-        return RateRobot(peopleController).apply(func)
+        return RateRobot().apply(func)
     }
 
 }
