@@ -1,14 +1,20 @@
 package hu.elte.inf.zoltantudlik.testingStars.people
 
 import android.support.test.espresso.Espresso
+import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.*
 import com.example.zoltantudlik.testing_stars.R
 import hu.elte.inf.zoltantudlik.testingStars.MainActivity
+import hu.elte.inf.zoltantudlik.testingStars.rate.RateRobot
 import hu.elte.inf.zoltantudlik.testingStars.utils.BaseRobot
 import hu.elte.inf.zoltantudlik.testingStars.utils.RecyclerHelper
+import hu.elte.inf.zoltantudlik.testingStars.utils.ViewHelper
 import org.awaitility.Awaitility
+import org.awaitility.Awaitility.await
+import org.hamcrest.Matchers.allOf
 import java.util.concurrent.TimeUnit
 
 
@@ -36,42 +42,49 @@ class PeopleRobot() : BaseRobot() {
     }
 
     fun checkPeopleDisplayed() {
-        Awaitility.await().atMost(5000, TimeUnit.MILLISECONDS).until {
-            var itemsLoaded = true
+        Espresso.onView(ViewMatchers.withId(R.id.personRecyclerView))
+                .check(matches(isDisplayed()))
+                .check(matches(RecyclerHelper.hasItems()))
 
-            Espresso.onView(ViewMatchers.withId(R.id.personRecyclerView))
-                    .withFailureHandler { _, _ -> itemsLoaded = false }
-                    .check(matches(isDisplayed()))
-                    .check(matches(RecyclerHelper.hasItems()))
+    }
 
-            return@until itemsLoaded
-        }
+    fun checkIfUserValueMatchesAtPosition(position: Int, name: String, rating: String) {
+        Espresso.onView(ViewMatchers.withId(R.id.personRecyclerView))
+                .check(matches(isDisplayed()))
+                .check(matches(RecyclerHelper.atPosition(position, allOf(
+                        ViewMatchers.hasDescendant(withText(name)),
+                        ViewMatchers.hasDescendant(withText(rating))
+                ))))
     }
 
     fun checkNoPeopleDisplayed() {
-        Awaitility.await().pollDelay(1000, TimeUnit.MILLISECONDS).atMost(2000, TimeUnit.MILLISECONDS).until {
-            var listIsEmpty = true
-
-            Espresso.onView(ViewMatchers.withId(R.id.personRecyclerView))
-                    .withFailureHandler { _, _ -> listIsEmpty = false }
-                    .check(matches(isDisplayed()))
-                    .check(matches(RecyclerHelper.emptyList()))
-
-            return@until listIsEmpty
-        }
+        Espresso.onView(ViewMatchers.withId(R.id.personRecyclerView))
+                .check(matches(isDisplayed()))
+                .check(matches(RecyclerHelper.emptyList()))
     }
 
     fun checkNoInternetToastIsShown() {
-        Awaitility.await().atMost(1000, TimeUnit.MILLISECONDS).until {
-            var toastShown = true
+        Espresso.onView(ViewMatchers.withText("Unable to retrieve list at the moment :("))
+                .inRoot(ToastMatcher())
+                .check(matches(isDisplayed()))
+    }
 
-            Espresso.onView(ViewMatchers.withText("Unable to retrieve list at the moment :("))
-                    .inRoot(ToastMatcher())
-                    .withFailureHandler { _, _ -> toastShown = false }
-                    .check(matches(isDisplayed()))
+    fun openUserRatingAndBack() {
+        Espresso
+                .onView(allOf(withId(R.id.personRecyclerView), RecyclerHelper.atPosition(0, hasDescendant(withId(R.id.person_image)))))
+                .perform(RecyclerViewActions.actionOnItemAtPosition<PeopleAdapter.ViewHolder>(0, ViewHelper.clickChildViewWithId(R.id.cardView)))
+        Espresso.onView(withId(R.id.ratingView)).check(matches(isDisplayed()))
 
-            return@until toastShown
-        }
+        Espresso.pressBack()
+        checkPeopleDisplayed()
+    }
+
+    infix fun openUserRating(func: RateRobot.() -> Unit): RateRobot {
+        Espresso
+                .onView(allOf(withId(R.id.personRecyclerView), RecyclerHelper.atPosition(0, hasDescendant(withId(R.id.person_image)))))
+                .perform(RecyclerViewActions.actionOnItemAtPosition<PeopleAdapter.ViewHolder>(0, ViewHelper.clickChildViewWithId(R.id.cardView)))
+
+        return RateRobot(peopleController).apply(func)
     }
 
 }

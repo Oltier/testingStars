@@ -31,7 +31,6 @@ class PeopleTestCases {
         }
 
         peopleList {
-            waitForPeopleListToLoad(activity)
             checkNoPeopleDisplayed()
             checkNoInternetToastIsShown()
         }
@@ -47,8 +46,35 @@ class PeopleTestCases {
         }
 
         peopleList {
-            waitForPeopleListToLoad(activity)
             checkPeopleDisplayed()
+        }
+    }
+
+    @Test
+    fun testUsersDisplayedWithProperValues() {
+        initialize {
+            initDagger()
+            enableInternetConnection(true)
+            activity = activityRule.launchActivity(Intent(Intent.ACTION_MAIN))
+        }
+
+        peopleList {
+            checkIfUserValueMatchesAtPosition(0, "Average Joe", "3.85")
+            checkIfUserValueMatchesAtPosition(1, "John Doe", "3.20")
+            checkIfUserValueMatchesAtPosition(2, "Alice Avalanche", "2.80")
+        }
+    }
+
+    @Test
+    fun testOpenUserRatingAndBack() {
+        initialize {
+            initDagger()
+            enableInternetConnection(true)
+            activity = activityRule.launchActivity(Intent(Intent.ACTION_MAIN))
+        }
+
+        peopleList {
+            openUserRatingAndBack()
         }
     }
 
