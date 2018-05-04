@@ -1,37 +1,23 @@
 package hu.elte.inf.zoltantudlik.testingStars
 
-import android.app.Application
-import hu.elte.inf.zoltantudlik.testingStars.dagger.components.*
+import hu.elte.inf.zoltantudlik.testingStars.dagger.MockNetworkModule
+import hu.elte.inf.zoltantudlik.testingStars.dagger.components.DaggerApplicationComponent
+import hu.elte.inf.zoltantudlik.testingStars.dagger.components.DaggerModelComponent
+import hu.elte.inf.zoltantudlik.testingStars.dagger.components.DaggerPresenterComponent
 import hu.elte.inf.zoltantudlik.testingStars.dagger.modules.AppModule
-import io.reactivex.plugins.RxJavaPlugins
-import timber.log.Timber
 
 
-open class TestingStarsApplication : Application() {
+class TestApplication : TestingStarsApplication() {
 
-    companion object {
-        @JvmStatic lateinit var modelComponent: ModelComponent
-        @JvmStatic lateinit var presenterComponent: PresenterComponent
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        RxJavaPlugins.setErrorHandler { throwable -> Timber.e(throwable) }
-
-        initDagger()
-    }
-
-    open fun initDagger() {
+    override fun initDagger() {
         val appModule = AppModule(this)
-
         val applicationComponent = DaggerApplicationComponent.builder()
                 .appModule(appModule)
                 .build()
 
-
         modelComponent = DaggerModelComponent.builder()
                 .applicationComponent(applicationComponent)
+                .networkModule(MockNetworkModule())
                 .build()
 
         presenterComponent = DaggerPresenterComponent.builder()

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
-import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
 import com.example.zoltantudlik.testing_stars.R
 import hu.elte.inf.zoltantudlik.testingStars.common.mvi.BaseController
 import hu.elte.inf.zoltantudlik.testingStars.rate.RateController

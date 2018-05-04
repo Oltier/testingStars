@@ -8,8 +8,6 @@ import android.widget.Toast
 import butterknife.BindView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
-import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
-import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
 import com.example.zoltantudlik.testing_stars.R
 import com.github.ornolfr.ratingview.RatingView
 import hu.elte.inf.zoltantudlik.testingStars.common.mvi.BaseController

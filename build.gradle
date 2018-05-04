@@ -9,6 +9,7 @@ buildscript {
     ext.retrofitVersion = '2.3.0'
     ext.okhttpVersion = '3.8.0'
     ext.butterknifeVersion = '8.8.1'
+    ext.junit5Version = '5.2.0'
     repositories {
         google()
         jcenter()

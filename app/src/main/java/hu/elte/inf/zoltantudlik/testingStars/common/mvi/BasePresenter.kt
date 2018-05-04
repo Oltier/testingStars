@@ -5,7 +5,7 @@ import com.hannesdorfmann.mosby3.mvi.MviBasePresenter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import timber.log.Timber
-import java.util.ArrayList
+import java.util.*
 
 abstract class BasePresenter<V : BaseViewContract<VS>, VS : BaseViewState, VSC : BaseViewStateChange<VS>>(private val initialState: VS) : MviBasePresenter<V, VS>(initialState) {
 
